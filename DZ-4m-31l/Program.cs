@@ -1,6 +1,6 @@
 ﻿
 //Создание объекта класса словарь.
-OtusDictionary<int,string> otusDictionary = new OtusDictionary<int,string>();
+OtusDictionary otusDictionary = new OtusDictionary();
 
 //Цикл для заполния словаря.
 for (int key = 0; key <= 50; key++)
@@ -9,6 +9,7 @@ for (int key = 0; key <= 50; key++)
 }
 
 otusDictionary.Add(110, "Ключ не по порядку");
+otusDictionary.Add(543, null);
 //Цикл вывода в консоль.
 for (int i = 0; i < otusDictionary.counter; i++)
 {
@@ -26,35 +27,44 @@ string RandomVord()
     string s = "";
     for (int i = 0; i < 5; i++)
     {
-        char a = (char)r.Next(0, 255);
-        s += a;
+        char a = (char)r.Next(0, 255);        
+        s = (a != '\n') ? s += a :s+= 'G';
+        
     }
     return s;
 }
 
 
 //Класс Словарь
-internal class OtusDictionary<KT,VT>
+internal class OtusDictionary
 {
     //Счётчик размера
     public int counter = 0;
     //Массивы для словаря
-    public KT[] arrKeys = new int[32];
-    private VT[] arrValues = new string[32];
+    public int[] arrKeys = new int[32];
+    private string[] arrValues = new string[32];
 
     //Методы словаря 
     public void Add(int key, string value)
     {
-        try
+        if (value != null)
         {
-            arrKeys[counter] = key;
-            arrValues[counter] = value;
-            counter++;
+            try
+            {
+                arrKeys[counter] = key;
+                arrValues[counter] = value;
+                counter++;
+            }
+            catch
+            {
+                Array.Resize(ref arrKeys, arrKeys.Length * 2);
+                Array.Resize(ref arrValues, arrValues.Length * 2);
+            }
+
         }
-        catch
+        else
         {
-            Array.Resize(ref arrKeys, arrKeys.Length * 2);
-            Array.Resize(ref arrValues, arrValues.Length * 2);
+            Console.WriteLine("Невозможно добавить null значение");
         }
 
     }
