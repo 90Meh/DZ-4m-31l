@@ -1,6 +1,6 @@
 ﻿
 //Создание объекта класса словарь.
-OtusDictionary otusDictionary = new OtusDictionary();
+OtusDictionary<int,string> otusDictionary = new OtusDictionary<int,string>();
 
 //Цикл для заполния словаря.
 for (int key = 0; key <= 50; key++)
@@ -8,7 +8,7 @@ for (int key = 0; key <= 50; key++)
     otusDictionary.Add(key, RandomVord());
 }
 
-otusDictionary.Add(110, "Jopa");
+otusDictionary.Add(110, "Ключ не по порядку");
 //Цикл вывода в консоль.
 for (int i = 0; i < otusDictionary.counter; i++)
 {
@@ -34,13 +34,13 @@ string RandomVord()
 
 
 //Класс Словарь
-internal class OtusDictionary
+internal class OtusDictionary<KT,VT>
 {
     //Счётчик размера
     public int counter = 0;
-    //Массивы для слова
-    public int[] arrKeys = new int[32];
-    private string[] arrValues = new string[32];
+    //Массивы для словаря
+    public KT[] arrKeys = new int[32];
+    private VT[] arrValues = new string[32];
 
     //Методы словаря 
     public void Add(int key, string value)
