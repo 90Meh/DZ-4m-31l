@@ -1,6 +1,10 @@
 ﻿
+
+using DZ_4m_31l;
 //Создание объекта класса словарь.
 OtusDictionary otusDictionary = new OtusDictionary();
+//Второй объект с индексацией
+IndexClass indexClass = new IndexClass();
 
 //Цикл для заполния словаря.
 for (int key = 0; key <= 50; key++)
@@ -27,57 +31,12 @@ string RandomVord()
     string s = "";
     for (int i = 0; i < 5; i++)
     {
-        char a = (char)r.Next(0, 255);        
-        s = (a != '\n') ? s += a :s+= 'G';
-        
+        char a = (char)r.Next(0, 255);
+        s = (a != '\n') ? s += a : s += 'G';
+
     }
     return s;
 }
 
 
-//Класс Словарь
-internal class OtusDictionary
-{
-    //Счётчик размера
-    public int counter = 0;
-    //Массивы для словаря
-    public int[] arrKeys = new int[32];
-    private string[] arrValues = new string[32];
-
-    //Методы словаря 
-    public void Add(int key, string value)
-    {
-        if (value != null)
-        {
-            try
-            {
-                arrKeys[counter] = key;
-                arrValues[counter] = value;
-                counter++;
-            }
-            catch
-            {
-                Array.Resize(ref arrKeys, arrKeys.Length * 2);
-                Array.Resize(ref arrValues, arrValues.Length * 2);
-            }
-
-        }
-        else
-        {
-            Console.WriteLine("Невозможно добавить null значение");
-        }
-
-    }
-    public string Get(int key)
-    {
-        try
-        {
-            return arrValues[key];
-        }
-        catch (Exception)
-        {
-            return "Неверное значение ключа.";
-        }
-    }
-}
-
+indexClass[1];
