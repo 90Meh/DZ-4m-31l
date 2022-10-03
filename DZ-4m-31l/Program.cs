@@ -39,4 +39,3 @@ string RandomVord()
 }
 
 
-indexClass[1];
