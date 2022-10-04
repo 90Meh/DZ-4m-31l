@@ -9,13 +9,13 @@ namespace DZ_4m_31l
     internal class IndexClass
     {
         //Элемент коллекции
-        class CellDict
+        public class CellDict
         {
             public int Key { get; set; }
             public string Value { get; set; }
         }
         //Класс словарь
-        class Dict
+       public class Dict<T>
         {
             //Изначальный массив объектов
             private CellDict[] cellDicts = new CellDict[32];
@@ -67,12 +67,17 @@ namespace DZ_4m_31l
                 }
                 cellDicts[index] = cell;
             }
-            public void Get()
+            public string Get(int key)
             {
-
+                // расчитываем индекс нужного элемента
+                int index = key % cellDicts.Length;
+                CellDict item = cellDicts[index];
+                if (item == null)
+                {
+                    throw new Exception("Нет такого элемента");
+                }
+                return item.Value;
             }
-
-            
         }
 
     }

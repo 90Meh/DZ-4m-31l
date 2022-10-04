@@ -3,9 +3,6 @@
 using DZ_4m_31l;
 //Создание объекта класса словарь.
 OtusDictionary otusDictionary = new OtusDictionary();
-//Второй объект с индексацией
-IndexClass indexClass = new IndexClass();
-
 //Цикл для заполния словаря.
 for (int key = 0; key <= 50; key++)
 {
@@ -14,6 +11,7 @@ for (int key = 0; key <= 50; key++)
 
 otusDictionary.Add(110, "Ключ не по порядку");
 otusDictionary.Add(543, null);
+
 //Цикл вывода в консоль.
 for (int i = 0; i < otusDictionary.counter; i++)
 {
@@ -22,6 +20,37 @@ for (int i = 0; i < otusDictionary.counter; i++)
 }
 
 Console.WriteLine(otusDictionary.Get(110));
+
+
+//Второй объект с индексацией
+IndexClass.Dict<int> dict= new IndexClass.Dict<int>();
+
+//Заполнение второго словаря
+for (int i = 0; i < 50; i++)
+{
+    dict.Add(i, RandomVord());
+}
+
+dict.Add(110, "Ключ не по порядку");
+dict.Add(543, null);
+
+//Вывод на консоль второго словаря
+for (int i = 0; i < 50; i++)
+{
+    Console.WriteLine($"Элемент {i}");
+    Console.WriteLine($"Значение {dict.Get(i)}");
+}
+
+//Получение значения по индексу и с помощью метода Get
+Console.WriteLine(dict[5].Value);
+Console.WriteLine(dict.Get(5));
+
+Console.WriteLine("110 ключ");
+Console.WriteLine(dict.Get(110));
+Console.WriteLine(dict.Get(543));
+
+
+
 Console.ReadKey();
 
 //Вспомогательный метод для создания случайных слов.
