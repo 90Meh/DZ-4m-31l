@@ -30,7 +30,7 @@ namespace DZ_4m_31l
 
             private void _resize()
             {
-                // формируем массив в два раза длинееееееее
+                // формируем массив в два раза длиннее
                 CellDict[] newDictItems = new CellDict[cellDicts.Length * 2];
 
                 // в цикле мы заново перераспределяем элементы
