@@ -17,7 +17,7 @@ namespace DZ_4m_31l
         public int[] arrKeys = new int[32];
         private string[] arrValues = new string[32];
 
-        
+        //Свойства индексатора
         public string this[int i] {get => Get(i);set => Add(i,value);}
 
 

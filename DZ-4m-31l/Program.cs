@@ -6,7 +6,8 @@ OtusDictionary<int> otusDictionary = new OtusDictionary<int>();
 //Цикл для заполния словаря.
 for (int key = 0; key <= 50; key++)
 {
-    otusDictionary.Add(key, RandomVord());
+    //otusDictionary.Add(key, RandomVord());
+    otusDictionary[key] = RandomVord();
 }
 
 otusDictionary.Add(110, "Ключ не по порядку");
